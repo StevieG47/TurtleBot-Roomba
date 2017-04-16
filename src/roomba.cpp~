@@ -45,10 +45,10 @@ void AutoExp(const sensor_msgs::LaserScan::ConstPtr& scan){
 }
 
 bool checkObstacle( float reading){
-	if (reading<.75) {
+	if (reading<.7) {
 		return true;
 	}
-	if (reading > .75) {
+	if (reading > .7) {
 		return false;
 	}
 }
@@ -79,7 +79,7 @@ while (ros::ok()) {
 
 	
 //Check for obstacle
-	if (checkObstacle(smallest) && smallest > 0) {
+	if (checkObstacle(smallest) ) {
 		//move forward
 		//make linear x velocity positive
 		input.linear.x = 0;
@@ -88,30 +88,34 @@ while (ros::ok()) {
 		//spin
 		input.angular.x = 0;
 		input.angular.y = 0;
-		input.angular.z = .2;
+		input.angular.z = .5;
 		//smallest = 10;
+		if (smallest != 0) {
 		ROS_INFO_STREAM("Turn");
+			}
 	}
 
 	else{
 //move forward
 //make linear x velocity positive
 if (smallest > 0){
-input.linear.x = .1;
+input.linear.x = .15;
 input.linear.y = 0;
 input.linear.z = 0;
 //spin
 input.angular.x = 0;
 input.angular.y = 0;
 input.angular.z = 0;
+if (smallest != 10) {
 ROS_INFO_STREAM("Forward");
+}
 }
 	}
 	
-	//if (smallest == 0) {
-		//input.angular.z = 0;
-		//input.linear.x = 0;
-	//}
+	if (smallest == 0 || smallest == 10) {
+		input.angular.z = 0;
+		input.linear.x = 0;
+	}
 	
 //publish to cmd_vel
 roombaPub.publish(input);

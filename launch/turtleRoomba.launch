@@ -1,0 +1,32 @@
+<launch>
+
+
+<arg name = "corridor"/>
+
+<include 
+file = "$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+<arg name = "world_file" value =  "$(find turtlebot_gazebo)/worlds/corridor.world"/>
+</include>
+
+<arg name = "startRecord" default = "false" />
+
+
+<node
+pkg = "turtlebot_roomba"
+type = "roomba"
+name = "roomba"
+output = "screen"
+launch-prefix = "gnome-terminal --command"
+/>
+
+<node
+pkg = "rosbag"
+type = "record"
+name = "rosbag_record_all"
+respawn = "true"
+output = "screen"
+args = "-a -O roomba -x /camera/(.*) "
+if = "$(arg startRecord)"
+/>
+
+</launch>
