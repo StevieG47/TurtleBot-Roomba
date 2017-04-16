@@ -28,7 +28,6 @@
 #include <sensor_msgs/LaserScan.h>
 #include "ros/ros.h"
 
-
 /* @brief
  * Define Roomba class
  *
@@ -42,6 +41,5 @@ class Roomba {
   bool checkObstacle(float reading);
   void AutoExp(const sensor_msgs::LaserScan::ConstPtr& scan);
 };
-
 
 #endif  //  INCLUDE_ROOMBA_H_"

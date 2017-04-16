@@ -31,7 +31,6 @@
 #include "std_msgs/String.h"
 #include "Roomba.h"
 
-
 int main(int argc, char **argv) {
 // initiate node
   ros::init(argc, argv, "roomba");
