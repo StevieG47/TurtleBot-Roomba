@@ -4,7 +4,7 @@
 
 - A ROS package with a simple walker algorithm for a TurtleBot to move like a Roomba vacuum, simulated in Gazebo. The robot will move forward until detecting an obstacle, turn in place, and continue moving forward.
 
-- The included node publishes to the */cmd_vel_mux/input/teleop* to drive the robot (publishing to the */mobile_base/commands/velocity* topic would work as well). It also subscribes to the *.scan* topic to get sensor information.
+- The included node publishes to the */cmd_vel_mux/input/teleop* to drive the robot (publishing to the */mobile_base/commands/velocity* topic would work as well). It also subscribes to the */scan* topic to get sensor information.
 
 
 ### Dependencies
@@ -13,6 +13,7 @@
 - catkin
 - turtlebot_gazebo
 - roscpp package
+- geometry_msgs package
 
 
 
@@ -37,7 +38,11 @@ roslaunch turtlebot_roomba turtleRoomba.launch
 
 This launches gazebo with the TurtleBot in the *corridor.world* world. Also, a new terminal will open with current information about the TurtleBot. The distance to an object in front of the robot is printed, along with the current action, *Forward* or *Turn*.
 
+![gazebo](https://cloud.githubusercontent.com/assets/25371934/25075042/f3c66560-22d8-11e7-8931-960d3e02f60c.JPG)
+
 The robot will move forward until detecting an obstacle close enough (threshold is .7) and then turn left in place until it is safe to move forward again. 
+
+![dist-action](https://cloud.githubusercontent.com/assets/25371934/25075048/0d0eaf0a-22d9-11e7-80d4-887f0f7be8f4.JPG)
 
 
 ### Recording Bag Files
@@ -58,16 +63,13 @@ To inspect the bag file, navigate to the *.ros* directory.
 rosbag info File.bag
 ```
 
+![rosbag-info](https://cloud.githubusercontent.com/assets/25371934/25075098/27608ada-22da-11e7-9761-ccf6d07c3de4.JPG)
+
+
 #### Bag File Playback
-- The bag file can be played back using *rosbag play*. Gazebo should not be running for the playback. To playback, open a terminal and run roscore, then open another terminal and navigate to the *.ros* directory.
+- The bag file can be played back using *rosbag play*. Gazebo should not be running for the playback. To playback, open a terminal and run roscore, then open another terminal and navigate to the *.ros* directory. The sensor data will be publishd again like when the simulation was running.
 ```
 rosbag play File.bag
-```
-
-The node included in this repository can be run during the playback and will print the same distance/action messages as when the simulation was being recorded. In a new terminal, navigate to *catkin_ws*.
-```
-source devel/setup.bash
-rosrun turtlebot_roomba roomba
 ```
 
 
