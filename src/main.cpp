@@ -16,7 +16,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  * @copyright Copyright 2017 Steven Gambino
- * @file roomba.cpp
+ * @file main.cpp
  * @author Steven Gambino
  * @brief Node to move turtlebot like a roomba, move until obstacles, then turn
  *
@@ -31,30 +31,6 @@
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>	
 
-
-/*
-float smallest;
-void AutoExp(const sensor_msgs::LaserScan::ConstPtr& scan) {
-  smallest = 10.0;
-  int size = scan->ranges.size();
-  for (int i = 0; i < size; i++) {
-    if (scan->ranges[i] < smallest) {
-      smallest = scan->ranges[i];
-      // ROS_INFO_STREAM("Min dist " << smallest);
-    }
-  }
-
-}
-
-bool checkObstacle(float reading) {
-  if (reading < .7) {
-    return true;
-  }
-  if (reading > .7) {
-    return false;
-  }
-}
-*/
 int main(int argc, char **argv) {
 
 //initiate node
@@ -66,7 +42,6 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(10);
 
 //create publisher roombaPub on geometry_msgs::Twist. Twist is math for linear/angular velocity. Topic is /cmd_vel_mux/input/teleop, Can also pusblish to /mobile_base/commands/velocity
-
 //ros::Publisher roombaPub = n.advertise < geometry_msgs::Twist> ("/mobile_base/commands/velocity", 1);
   ros::Publisher roombaPub = n.advertise < geometry_msgs::Twist
       > ("/cmd_vel_mux/input/teleop", 1000);
@@ -83,7 +58,7 @@ int main(int argc, char **argv) {
 //Check for obstacle
     if (bot.checkObstacle(bot.smallest)) {
       //move forward
-      //make linear x velocity positive
+      //make angular z positive
       input.linear.x = 0;
       input.linear.y = 0;
       input.linear.z = 0;
@@ -91,20 +66,21 @@ int main(int argc, char **argv) {
       input.angular.x = 0;
       input.angular.y = 0;
       input.angular.z = .5;
-      //smallest = 10;
+
+      //Print that we are turning 
       if (bot.smallest > .00001) {
         ROS_INFO_STREAM("Dist: " << bot.smallest << ", Turn");
       }
     }
 
     else {
-//move forward
-//make linear x velocity positive
+// move forward
+// make linear x velocity positive
       if (bot.smallest > 0) {
         input.linear.x = .15;
         input.linear.y = 0;
         input.linear.z = 0;
-//spin
+
         input.angular.x = 0;
         input.angular.y = 0;
         input.angular.z = 0;
@@ -114,20 +90,16 @@ int main(int argc, char **argv) {
       }
     }
 
+    // When starting up dont move
     if (bot.smallest < .00001 || bot.smallest > 99) {
       input.angular.z = 0;
       input.linear.x = 0;
       ROS_INFO_STREAM("Idle");
     }
 
-//publish to cmd_vel
+// publish to cmd_vel
     roombaPub.publish(input);
 
-//ROS_INFO_STREAM(input.linear.x);
-//print to console
-//ROS_INFO_STREAM("Linear Velocity: " << input.linear.x);
-
-//smallest = 10;
     ros::spinOnce();
     loop_rate.sleep();
     ++count;

@@ -25,19 +25,17 @@
 #ifndef ROOMBA_H
 #define ROOMBA_H
 
-//#include <ros/console.h>
-//#include <sstream>
-//#include <cstdlib>
-//#include <string>
 #include "ros/ros.h"
-//#include "std_msgs/String.h"
-//#include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>  
-//#include "roomba.h"
 
-
+/* @brief
+ * Define Roomba class
+ *
+ * Class contains smallest variable from sensor data and functions to decide if turning is
+ * necessary
+ */
 class Roomba {
-public:
+ public:
   float smallest;
 
   bool checkObstacle(float reading);
