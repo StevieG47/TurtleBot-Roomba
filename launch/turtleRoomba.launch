@@ -25,7 +25,7 @@ type = "record"
 name = "rosbag_record_all"
 respawn = "true"
 output = "screen"
-args = "-a -O roomba -x /camera/(.*) "
+args = "-a -O File -x /camera/(.*) "
 if = "$(arg startRecord)"
 />
 
