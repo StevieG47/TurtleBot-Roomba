@@ -21,14 +21,14 @@
  * @brief Node to move turtlebot like a roomba, move until obstacles, then turn
  *
  */
+#include <geometry_msgs/Twist.h>
+#include <sensor_msgs/LaserScan.h>
 #include <ros/console.h>
 #include <sstream>
 #include <cstdlib>
 #include <string>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include <geometry_msgs/Twist.h>
-#include <sensor_msgs/LaserScan.h>	
 #include "Roomba.h"
 
 /**
@@ -45,7 +45,6 @@ void Roomba::AutoExp(const sensor_msgs::LaserScan::ConstPtr& scan) {
       // ROS_INFO_STREAM("Min dist " << smallest);
     }
   }
-
 }
 
 /**

@@ -22,11 +22,12 @@
  *
  */
 
-#ifndef ROOMBA_H
-#define ROOMBA_H
+#ifndef ROOMBA_H_ // NOLINT
+#define ROOMBA_H_
 
+#include <sensor_msgs/LaserScan.h>
 #include "ros/ros.h"
-#include <sensor_msgs/LaserScan.h>  
+
 
 /* @brief
  * Define Roomba class
@@ -42,4 +43,5 @@ class Roomba {
   void AutoExp(const sensor_msgs::LaserScan::ConstPtr& scan);
 };
 
-#endif 
+
+#endif  //  INCLUDE_ROOMBA_H_"
