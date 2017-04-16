@@ -67,7 +67,7 @@ rosbag info File.bag
 
 
 #### Bag File Playback
-- The bag file can be played back using *rosbag play*. Gazebo should not be running for the playback. To playback, open a terminal and run roscore, then open another terminal and navigate to the *.ros* directory. The sensor data will be publishd again like when the simulation was running.
+- The bag file can be played back using *rosbag play*. Gazebo should not be running for the playback. To playback, open a terminal and run roscore, then open another terminal and navigate to the *.ros* directory. The sensor data will be published again like when the simulation was running.
 ```
 rosbag play File.bag
 ```
