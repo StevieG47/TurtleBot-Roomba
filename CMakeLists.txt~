@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(TurtleBot_Roomba)
+project(turtlebot_roomba)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -93,7 +93,7 @@ catkin_package(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(roomba src/roomba.cpp)
+add_executable(roomba src/main.cpp src/roomba.cpp)
 target_link_libraries(roomba ${catkin_LIBRARIES})
 #add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
@@ -104,8 +104,8 @@ target_link_libraries(roomba ${catkin_LIBRARIES})
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
+include_directories( 
+  ${catkin_INCLUDE_DIRS} include
 )
 
 ## Declare a cpp library
