@@ -33,6 +33,7 @@ catkin_make
 - To run the simulation, use the *turtleRoomba.launch* launch file.
 
 ```
+source devel/setup.bash
 roslaunch turtlebot_roomba turtleRoomba.launch
 ```
 
