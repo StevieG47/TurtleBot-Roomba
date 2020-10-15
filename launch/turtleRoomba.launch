@@ -8,7 +8,7 @@ file = "$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch">
 <arg name = "world_file" value =  "$(find turtlebot3_gazebo)/worlds/corridor.world"/>
 </include>
 
-<arg name = "startRecord" default = "false" />
+<!-- <arg name = "startRecord" default = "false" /> -->
 
 
 <node
@@ -19,7 +19,7 @@ output = "screen"
 launch-prefix = "gnome-terminal --command"
 />
 
-<node
+<!--<node
 pkg = "rosbag"
 type = "record"
 name = "rosbag_record_all"
@@ -27,6 +27,6 @@ respawn = "true"
 output = "screen"
 args = "-a -O File -x /camera/(.*) "
 if = "$(arg startRecord)"
-/>
+/> -->
 
 </launch>
