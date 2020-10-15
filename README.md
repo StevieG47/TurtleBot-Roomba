@@ -1,19 +1,19 @@
-# TurtleBot Simple Walker
+# TurtleBot3 Simple Walker
 
 ### Overview
 
-- A ROS package with a simple walker algorithm for a TurtleBot to move like a Roomba vacuum, simulated in Gazebo. The robot will move forward until detecting an obstacle, turn in place, and continue moving forward.
+- A ROS package with a simple walker algorithm for a TurtleBot3 to move like a Roomba vacuum, simulated in Gazebo. The robot will move forward until detecting an obstacle, turn in place, and continue moving forward.
 
-- The included node publishes to the */cmd_vel_mux/input/teleop* to drive the robot (publishing to the */mobile_base/commands/velocity* topic would work as well). It also subscribes to the */scan* topic to get sensor information.
+- The included node publishes to the */cmd_vel* to drive the robot (publishing to the */mobile_base/commands/velocity* topic would work as well). It also subscribes to the */scan* topic to get sensor information.
 
 
 ### Dependencies
-- ROS Indigo
+- ROS Melodic
 - Gazebo
 - catkin
-- turtlebot_gazebo
-- roscpp package
-- geometry_msgs package
+- turtlebot3_gazebo
+- roscpp 
+- geometry_msgs 
 
 
 
