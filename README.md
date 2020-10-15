@@ -24,7 +24,7 @@ mkdir catkin_ws
 cd catkin_ws
 mkdir src
 cd src
-git clone --recursive https://github.com/StevieG47/TurtleBot-Roomba
+git clone --recursive https://github.com/adbdwai/turtlebot3_roomba
 cd ..
 catkin_make
 ```
