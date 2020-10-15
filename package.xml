@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <package>
-  <name>turtlebot_roomba</name>
+  <name>turtlebot3_roomba</name>
   <version>0.0.0</version>
-  <description>TurtleBot moving like a roomba</description>
+  <description>TurtleBot3 moving like a roomba</description>
 
  
-  <maintainer email="47stevo@gmail.com">Steven G</maintainer>
+  <maintainer email="adbidwai@gmail.com">Steven G</maintainer>
 
 
   <license>MIT</license>
