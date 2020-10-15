@@ -5,7 +5,7 @@
 
 <include 
 file = "$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch">
-<arg name = "world_file" value =  "$(find turtlebot3_gazebo)/worlds/corridor.world"/>
+<arg name = "world_file" value =  "$(find turtlebot3_gazebo)/worlds/turtlebot3_house.world "/>
 </include>
 
 <!-- <arg name = "startRecord" default = "false" /> -->
