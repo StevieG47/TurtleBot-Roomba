@@ -4,7 +4,7 @@
 
 - A ROS package with a simple walker algorithm for a TurtleBot3 to move like a Roomba vacuum, simulated in Gazebo. The robot will move forward until detecting an obstacle, turn in place, and continue moving forward.
 
-- The included node publishes to the */cmd_vel* to drive the robot (publishing to the */mobile_base/commands/velocity* topic would work as well). It also subscribes to the */scan* topic to get sensor information.
+- The included node publishes to the topic `/cmd_vel` to drive the robot. It also subscribes to the `/scan` topic to get sensor information.
 
 
 ### Dependencies
@@ -14,19 +14,17 @@
 - turtlebot3_gazebo
 - roscpp 
 - geometry_msgs 
-
+- python_catkin_tools
 
 
 ### How to Build
 - Create the catkin workspace and build with:
 ```
-mkdir catkin_ws
-cd catkin_ws
-mkdir src
-cd src
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
 git clone --recursive https://github.com/adbdwai/turtlebot3_roomba
 cd ..
-catkin_make
+catkin build
 ```
 
 ### Running 
