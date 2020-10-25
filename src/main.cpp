@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
 // create publisher roombaPub on geometry_msgs::Twist. Twist is math for linear/angular velocity. Topic is /cmd_vel_mux/input/teleop, Can also pusblish to /mobile_base/commands/velocity
 // ros::Publisher roombaPub = n.advertise < geometry_msgs::Twist> ("/mobile_base/commands/velocity", 1);
   ros::Publisher roombaPub = n.advertise < geometry_msgs::Twist
-      > ("/cmd_vel_mux/input/teleop", 1000);
+      > ("/cmd_vel", 1000);
 
 // SUBSCRIBE TO /scan to get info about sensor.
 // ros::Subscriber subScan = n.subscribe < sensor_msgs::LaserScan>("/scan",10,&AutoExp::processLaserScan,this);

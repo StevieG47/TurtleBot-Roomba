@@ -4,22 +4,22 @@
 <arg name = "corridor"/>
 
 <include 
-file = "$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
-<arg name = "world_file" value =  "$(find turtlebot_gazebo)/worlds/corridor.world"/>
+file = "$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch">
+<arg name = "world_file" value =  "$(find turtlebot3_gazebo)/worlds/turtlebot3_house.world "/>
 </include>
 
-<arg name = "startRecord" default = "false" />
+<!-- <arg name = "startRecord" default = "false" /> -->
 
 
 <node
-pkg = "turtlebot_roomba"
+pkg = "turtlebot3_roomba"
 type = "roomba"
 name = "roomba"
 output = "screen"
 launch-prefix = "gnome-terminal --command"
 />
 
-<node
+<!--<node
 pkg = "rosbag"
 type = "record"
 name = "rosbag_record_all"
@@ -27,6 +27,6 @@ respawn = "true"
 output = "screen"
 args = "-a -O File -x /camera/(.*) "
 if = "$(arg startRecord)"
-/>
+/> -->
 
 </launch>
